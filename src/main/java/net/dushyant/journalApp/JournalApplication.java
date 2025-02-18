@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.MongoDatabaseFactory;
 import org.springframework.data.mongodb.MongoTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.client.RestTemplate;
 
 
 //@SpringBootApplication-> 1.Configuration(Beans making at methods), 2.Auto-Configuration(Automatically configures properties of dependency)
@@ -24,6 +25,12 @@ public class JournalApplication {
     public PlatformTransactionManager add(MongoDatabaseFactory dbFactory){
         return new MongoTransactionManager(dbFactory);
     }
+
+    @Bean
+    public RestTemplate restTemplate(){
+        return  new RestTemplate();
+    }
+
 }
 //PlatformTransactionManager
 //MongoTransactionManager(Implementation)

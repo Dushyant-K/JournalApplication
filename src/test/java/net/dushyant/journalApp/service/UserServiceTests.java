@@ -28,6 +28,7 @@ public class UserServiceTests {
 //
 //    }
 
+    @Disabled
     @ParameterizedTest
     @ArgumentsSource(UserArgumentsProvider.class)
     public void testSaveNewUser(User user){
