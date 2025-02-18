@@ -1,5 +1,6 @@
 package net.dushyant.journalApp.controller;
 
+import net.dushyant.journalApp.cache.AppCache;
 import net.dushyant.journalApp.entity.User;
 import net.dushyant.journalApp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/admin")
 public class AdminController {
+
+    @Autowired
+    private AppCache appCache;
 
     @Autowired
     UserService userService;
@@ -29,6 +33,11 @@ public class AdminController {
     public void createUser(@RequestBody User user){
         userService.saveAdmin(user);
 
+    }
+
+    @GetMapping("clear-app-cache")
+    public void clearAppCache(){
+        appCache.init();
     }
 
 }
